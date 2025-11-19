@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import UserContext from '../UserContext'; // Note the relative path: '../'
+import UserContext from '../UserContext'; // Simple relative path
 
 // This component no longer accepts props
 const UserProfile = () => {
   // Use the useContext hook to grab the data from the provider
   const userData = useContext(UserContext);
 
-  // Styles remain the same for visual check
+  // Styles remain the same
   const cardStyle = {
-    border: '2px solid #D1D5DB', // Light Gray border
+    border: '2px solid #D1D5DB', 
     padding: '25px',
     margin: '15px',
     borderRadius: '12px',
@@ -30,10 +30,9 @@ const UserProfile = () => {
 
   return (
     <div style={cardStyle}>
-      <h2 style={nameStyle}>Name: {userData.name}</h2>
-      <p style={{ marginBottom: '8px' }}>Email: <span style={valueStyle}>{userData.email}</span></p>
-      {/* Displaying age/bio from old prop structure isn't required by the task, 
-          so we use the new context data (name/email) */}
+      {/* Reference Context Data: Name and Email */}
+      <h2 style={nameStyle}>User: {userData ? userData.name : 'Loading...'}</h2>
+      <p style={{ marginBottom: '8px' }}>Email: <span style={valueStyle}>{userData ? userData.email : 'N/A'}</span></p>
       <p>Source: <span style={{ color: '#6B7280' }}>React Context API</span></p>
     </div>
   );
