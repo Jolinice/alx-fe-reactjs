@@ -1,6 +1,7 @@
+import React from 'react';
 import UserInfo from './UserInfo';
 
-// userData prop is removed
+// userData prop is NOT passed down here
 function ProfilePage() {
   return (
     <div style={{ padding: '10px', border: '1px solid #63B3ED', margin: '10px', borderRadius: '4px' }}>
