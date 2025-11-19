@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import UserContext from './UserContext';
 
+// This component no longer accepts props
 function UserDetails() {
-  // Use the useContext hook to grab the data from the provider
+  // Consume Context: This is the key change to eliminate prop drilling
   const userData = useContext(UserContext);
 
   return (
-    <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '300px', margin: '20px auto' }}>
-      <h3 style={{ color: '#3182CE' }}>User Details (Consumed Context)</h3>
-      {/* The component now uses data directly from userData */}
+    <div style={{ padding: '20px', border: '1px dashed #4F46E5', borderRadius: '8px', maxWidth: '300px', margin: '20px auto', backgroundColor: '#EEF2FF' }}>
+      <h3 style={{ color: '#4F46E5' }}>User Details (Context Consumer)</h3>
       <p>Name: <strong>{userData.name}</strong></p>
       <p>Email: <strong>{userData.email}</strong></p>
     </div>
