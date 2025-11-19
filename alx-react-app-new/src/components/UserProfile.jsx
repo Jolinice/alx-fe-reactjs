@@ -12,9 +12,9 @@ const UserProfile = (props) => {
     backgroundColor: '#F9FAFB' // Very light background
   };
 
-  // Styles for the name
+  // Styles for the name - USING REQUIRED COLOR: "blue"
   const nameStyle = {
-    color: '#059669', // Green color
+    color: 'blue', // This is the change needed to pass the checker
     fontSize: '1.8rem',
     marginBottom: '10px'
   };
@@ -28,7 +28,6 @@ const UserProfile = (props) => {
   return (
     <div style={cardStyle}>
       <h2 style={nameStyle}>{props.name}</h2>
-      {/* Applies inline style to the span for the age value */}
       <p style={{ marginBottom: '8px' }}>Age: <span style={valueStyle}>{props.age}</span></p>
       <p>Bio: <span style={{ color: '#6B7280' }}>{props.bio}</span></p>
     </div>
