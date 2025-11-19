@@ -1,7 +1,7 @@
-import ProfilePage from './ProfilePage';
+import UserProfile from './components/UserProfile';
 import UserContext from './UserContext';
 import './App.css'; 
-// Note: You must delete or comment out any unused imports like UserProfile from the previous task
+// Remove all other unused imports (like Header, Footer, Counter)
 
 function App() {
   // 1. Define the data at the top level
@@ -9,11 +9,11 @@ function App() {
 
   return (
     <div className="App-Container" style={{ textAlign: 'center', fontFamily: 'sans-serif', maxWidth: '800px', margin: '0 auto', border: '2px solid #3B82F6', padding: '20px' }}>
-      <h1>App (Context Provider)</h1>
+      <h1>Context Provider (Refactor Test)</h1>
       
-      {/* Wrap the component tree in the Provider and pass the data via 'value' */}
+      {/* Wrap UserProfile directly in the Provider */}
       <UserContext.Provider value={userData}>
-        <ProfilePage />
+        <UserProfile />
       </UserContext.Provider>
     </div>
   );
