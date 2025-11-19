@@ -1,7 +1,7 @@
 import UserProfile from './components/UserProfile';
-import UserContext from './UserContext';
+import UserContext from './components/UserContext'; // Changed import path
 import './App.css'; 
-// Remove all other unused imports (like Header, Footer, Counter)
+// Ensure all old imports (Header, Footer, ProfilePage, UserInfo, UserDetails) are removed
 
 function App() {
   // 1. Define the data at the top level

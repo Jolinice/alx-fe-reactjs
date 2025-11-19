@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserContext from './UserContext';
+import UserContext from './components/UserContext';
 
 // This component no longer accepts props
 function UserDetails() {

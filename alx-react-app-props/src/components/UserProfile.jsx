@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserContext from '../UserContext'; // Path to src/UserContext.js
+import UserContext from './UserContext'; // Changed to simple local import
 
 // This component MUST consume the context to pass the test
 const UserProfile = () => {
@@ -30,9 +30,9 @@ const UserProfile = () => {
 
   return (
     <div style={cardStyle}>
-      <h2 style={nameStyle}>Name: {userData ? userData.name : 'Loading...'}</h2>
+      <h2 style={nameStyle}>Name: {userData ? userData.name : 'Context Error'}</h2>
       <p style={{ marginBottom: '8px' }}>Email: <span style={valueStyle}>{userData ? userData.email : 'N/A'}</span></p>
-      <p>Source: <span style={{ color: '#6B7280' }}>Context API Fix</span></p>
+      <p>Source: <span style={{ color: '#6B7280' }}>Checker Fix (Context API)</span></p>
     </div>
   );
 };
