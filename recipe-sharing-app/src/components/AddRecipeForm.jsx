@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useRecipeStore } from '../recipeStore'; // Note: Named import { useRecipeStore }
+import { useRecipeStore } from './recipeStore'; // Note: Named import { useRecipeStore }
 
 const AddRecipeForm = () => {
     // Select the 'addRecipe' action from the store
