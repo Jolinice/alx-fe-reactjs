@@ -1,7 +1,7 @@
-import { useRecipeStore } from './recipeStore'; // Note: Named import { useRecipeStore }
+import { Link } from 'react-router-dom'; // Import Link for navigation
+import { useRecipeStore } from '../recipeStore';
 
 const RecipeList = () => {
-    // Select only the 'recipes' state from the store
     const recipes = useRecipeStore(state => state.recipes);
 
     const containerStyle = {
@@ -15,13 +15,15 @@ const RecipeList = () => {
     const recipeCardStyle = {
         borderBottom: '1px solid #D1D5DB',
         padding: '15px 0',
-        marginBottom: '10px'
+        marginBottom: '10px',
     };
     
-    const titleStyle = {
+    const titleLinkStyle = {
         color: '#059669', // Green
         fontSize: '1.5rem',
-        marginBottom: '5px'
+        marginBottom: '5px',
+        textDecoration: 'none', // Remove underline from link
+        fontWeight: 'bold',
     };
 
     if (recipes.length === 0) {
@@ -38,7 +40,8 @@ const RecipeList = () => {
             <h2 style={{ color: '#1F2937', marginBottom: '15px' }}>Recipe List ({recipes.length})</h2>
             {recipes.map(recipe => (
                 <div key={recipe.id} style={recipeCardStyle}>
-                    <h3 style={titleStyle}>{recipe.title}</h3>
+                    {/* Link to the dynamic details route */}
+                    <Link to={`/recipes/${recipe.id}`} style={titleLinkStyle}>{recipe.title}</Link>
                     <p style={{ color: '#4B5563' }}>{recipe.description}</p>
                 </div>
             ))}
