@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useRecipeStore from '../recipeStore';
+import { useRecipeStore } from '../recipeStore'; // Note: Named import { useRecipeStore }
 
 const AddRecipeForm = () => {
     // Select the 'addRecipe' action from the store
@@ -13,7 +13,8 @@ const AddRecipeForm = () => {
         event.preventDefault();
         
         if (!title || !description) {
-            alert('Please fill in both the title and description.');
+            // Note: Using console.error instead of alert()
+            console.error('Please fill in both the title and description.');
             return;
         }
 
