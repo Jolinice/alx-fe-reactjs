@@ -3,7 +3,7 @@ import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 
-// New Home component to contain the AddForm and the List
+// Home component contains the form and list
 const Home = () => (
     <>
         <AddRecipeForm />
@@ -32,20 +32,18 @@ function App() {
         <div style={appStyle}>
             <h1 
                 style={headerStyle} 
-                onClick={() => window.location.href = '/'} // Click header to go home
+                // Use Link or navigate, but direct click is a simple fallback for the header
+                onClick={() => window.location.href = '/'} 
             >
                 🍽️ Recipe Sharing App
             </h1>
             
             <Routes>
-                {/* Route for the main page (Add Form and List) */}
+                {/* Route for the main page (Home) */}
                 <Route path="/" element={<Home />} />
                 
-                {/* Dynamic route for recipe details/editing */}
+                {/* Dynamic route for recipe details/editing - MUST BE correct path format */}
                 <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-                
-                {/* Fallback for unknown routes */}
-                <Route path="*" element={<h2>404 Not Found</h2>} />
             </Routes>
         </div>
     );

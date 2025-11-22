@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRecipeStore } from '../recipeStore';
 
+// Destructure props explicitly
 const EditRecipeForm = ({ recipe, onSave }) => {
     const updateRecipe = useRecipeStore(state => state.updateRecipe);
     const [title, setTitle] = useState(recipe.title);
@@ -11,20 +12,20 @@ const EditRecipeForm = ({ recipe, onSave }) => {
         
         if (!title || !description) return;
 
-        // Call the store update action with the new object
+        // Ensure the ID is correctly used when updating the store
         updateRecipe({ 
-            id: recipe.id, 
+            id: recipe.id, // Use the existing recipe ID
             title, 
             description 
         });
         
-        // Notify the parent component (RecipeDetails) to switch back to view mode
+        // Call the external save handler
         onSave();
     };
     
     const formStyle = {
         padding: '15px',
-        backgroundColor: '#FFFAE8', // Light Yellow
+        backgroundColor: '#FFFAE8', 
         borderRadius: '8px',
         border: '1px dashed #F59E0B',
         marginTop: '20px'
@@ -41,7 +42,7 @@ const EditRecipeForm = ({ recipe, onSave }) => {
     
     const buttonStyle = {
         padding: '10px 15px',
-        backgroundColor: '#F59E0B', // Orange
+        backgroundColor: '#F59E0B',
         color: 'white',
         border: 'none',
         borderRadius: '4px',

@@ -7,18 +7,20 @@ import DeleteRecipeButton from './DeleteRecipeButton';
 const RecipeDetails = () => {
     // 1. Get the recipe ID from the URL parameters
     const { recipeId } = useParams();
-    const id = parseInt(recipeId);
+    // Ensure ID is converted to a number for comparison (Zustand IDs are numbers)
+    const id = parseInt(recipeId, 10); 
 
-    // 2. Select the recipe from the store
-    const recipe = useRecipeStore(state =>
-      state.recipes.find(r => r.id === id)
+    // 2. Select the recipe from the store using a strong selector
+    const recipe = useRecipeStore(
+        // The selector function
+        (state) => state.recipes.find(r => r.id === id)
     );
     
     // Local state to toggle between view and edit modes
     const [isEditing, setIsEditing] = useState(false);
     
     if (!recipe) {
-        // If recipe is not found (e.g., deleted), redirect to home
+        // If recipe is not found, redirect to home
         return <Navigate to="/" replace />;
     }
 
@@ -65,6 +67,7 @@ const RecipeDetails = () => {
                         <button onClick={() => setIsEditing(true)} style={buttonStyle}>
                             Edit Recipe
                         </button>
+                        {/* Pass the ID to the Delete button */}
                         <DeleteRecipeButton recipeId={recipe.id} />
                     </div>
                 </div>
