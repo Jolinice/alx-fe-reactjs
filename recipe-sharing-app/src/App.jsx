@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom'; // Import Link
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
@@ -25,24 +25,29 @@ function App() {
         borderBottom: '2px solid #10B981',
         paddingBottom: '10px',
         marginBottom: '30px',
-        cursor: 'pointer'
+    };
+    
+    const headerLinkStyle = {
+        textDecoration: 'none', // Remove the default link underline
+        color: 'inherit',
+        cursor: 'pointer',
+        display: 'block' // Make the whole header clickable
     };
 
     return (
         <div style={appStyle}>
-            <h1 
-                style={headerStyle} 
-                // Use Link or navigate, but direct click is a simple fallback for the header
-                onClick={() => window.location.href = '/'} 
-            >
-                🍽️ Recipe Sharing App
-            </h1>
+            {/* Use Link component for pure React Router navigation back to home */}
+            <Link to="/" style={headerLinkStyle}>
+                <h1 style={headerStyle}>
+                    🍽️ Recipe Sharing App
+                </h1>
+            </Link>
             
             <Routes>
                 {/* Route for the main page (Home) */}
                 <Route path="/" element={<Home />} />
                 
-                {/* Dynamic route for recipe details/editing - MUST BE correct path format */}
+                {/* Dynamic route for recipe details/editing */}
                 <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
             </Routes>
         </div>
