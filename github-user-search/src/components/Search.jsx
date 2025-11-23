@@ -13,7 +13,7 @@ function Search() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (!username.trim()) return; // Prevent search on empty input
+    if (!username.trim()) return; 
 
     // Reset states before starting new request
     setUser(null);
@@ -26,8 +26,8 @@ function Search() {
       setUser(userData);
       setError(null);
     } catch (err) {
-      // Handle the error message requirement
-      setError("Looks like we can't find the user.");
+      // *** THIS IS THE CRITICAL FIX: The string matches the required format exactly (no apostrophe, no period) ***
+      setError("Looks like we cant find the user"); 
       setUser(null);
     } finally {
       setLoading(false);
@@ -77,7 +77,7 @@ function Search() {
                 borderRadius: '50%',
                 border: '3px solid #3B82F6'
             }} 
-            // Placeholder/fallback image if the original fails to load
+            // Fallback for image loading error
             onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/100x100/A3A3A3/FFFFFF?text=?" }}
           />
           <div>
