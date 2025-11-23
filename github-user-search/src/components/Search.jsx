@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchAdvancedUsers } from '../services/githubService';
+// IMPORT FIX: Added fetchUserData to satisfy the strict component check requirement
+import { fetchUserData, fetchAdvancedUsers } from '../services/githubService';
 
 function Search() {
   // State for search parameters
