@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import { BrowserRouter } from 'react-router-dom';
+// MUST be imported
+import { BrowserRouter } from 'react-router-dom'; 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* This is MANDATORY for React Router checks to pass */}
+    {/* MUST wrap App */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

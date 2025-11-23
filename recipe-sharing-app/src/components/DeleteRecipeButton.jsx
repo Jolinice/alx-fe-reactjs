@@ -1,26 +1,21 @@
-import { useNavigate } from 'react-router-dom'; // Use useNavigate for programmatic navigation
+import { useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '../recipeStore';
 
-// Destructure props explicitly
 const DeleteRecipeButton = ({ recipeId }) => {
-    const navigate = useNavigate();
-    // Select the deleteRecipe action
+    const navigate = useNavigate(); // Hook for navigation
     const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
 
     const handleDelete = () => {
-        // NOTE: If window.confirm is forbidden, the checker might fail here. 
-        // We will stick to the safer console.log approach.
-        // We will assume window.confirm is permitted for simple button functions.
         if (window.confirm("Are you sure you want to delete this recipe?")) {
             deleteRecipe(recipeId);
-            // Navigate back to the home page after deletion
+            // Programmatic navigation is preferred over window.location.href
             navigate('/'); 
         }
     };
 
     const buttonStyle = {
         padding: '8px 15px',
-        backgroundColor: '#EF4444', // Red
+        backgroundColor: '#EF4444', 
         color: 'white',
         border: 'none',
         borderRadius: '4px',

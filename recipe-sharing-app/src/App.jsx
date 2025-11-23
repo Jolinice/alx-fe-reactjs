@@ -1,15 +1,7 @@
-import { Routes, Route, Link } from 'react-router-dom'; // Import Link
+import { Routes, Route, Link } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
-
-// Home component contains the form and list
-const Home = () => (
-    <>
-        <AddRecipeForm />
-        <RecipeList />
-    </>
-);
 
 function App() {
     const appStyle = {
@@ -21,17 +13,17 @@ function App() {
     
     const headerStyle = {
         textAlign: 'center',
-        color: '#059669', // Green
+        color: '#059669', 
         borderBottom: '2px solid #10B981',
         paddingBottom: '10px',
         marginBottom: '30px',
     };
     
     const headerLinkStyle = {
-        textDecoration: 'none', // Remove the default link underline
+        textDecoration: 'none', 
         color: 'inherit',
         cursor: 'pointer',
-        display: 'block' // Make the whole header clickable
+        display: 'block' 
     };
 
     return (
@@ -44,8 +36,16 @@ function App() {
             </Link>
             
             <Routes>
-                {/* Route for the main page (Home) */}
-                <Route path="/" element={<Home />} />
+                {/* Route for the main page (Add Form and List) - Now inline */}
+                <Route 
+                    path="/" 
+                    element={
+                        <>
+                            <AddRecipeForm />
+                            <RecipeList />
+                        </>
+                    } 
+                />
                 
                 {/* Dynamic route for recipe details/editing */}
                 <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
