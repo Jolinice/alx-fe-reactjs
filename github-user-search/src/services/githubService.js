@@ -7,7 +7,7 @@ const GITHUB_SEARCH_URL = 'https://api.github.com/search/users';
 const GITHUB_API_KEY = import.meta.env.VITE_GITHUB_API_KEY;
 
 /**
- * Fetches data for a single user (kept for backward compatibility, although search is primary now).
+ * Fetches data for a single user (kept for completeness).
  * @param {string} username - The GitHub username to search for.
  * @returns {Promise<object>} The user data object.
  */
@@ -37,28 +37,24 @@ const fetchAdvancedUsers = async ({ query, location, minRepos, page = 1 }) => {
         
         let q = query || ''; // Start with the main query text
 
-        // Add filters to the query string 'q'
+        // Add filters to the query string 'q' using GitHub search syntax
         if (location) {
-            // Appends location filter (e.g., location:lagos)
+            // Add location filter using GitHub search syntax (location:CITY)
             q += ` location:${location}`; 
         }
         if (minRepos > 0) {
-            // Appends repository filter (e.g., repos:>=10)
+            // Add repository filter using GitHub search syntax (repos:>=NUMBER)
             q += ` repos:>=${minRepos}`;
         }
 
-        // Must have some query text when using the /search endpoint
-        if (!q.trim()) {
-             // Use a broad search if no specific query is provided, or throw error as required
-             // We'll use a broad keyword to prevent an empty query from failing
-             q = 'type:user'; 
-        }
+        // Use 'type:user' as a default if the query is still empty, ensuring a valid search structure
+        const trimmedQ = q.trim() || 'type:user'; 
         
         const params = {
-            q: q.trim(),
+            q: trimmedQ,
             per_page: 10, // Fetch 10 results per page
             page: page,
-            sort: 'followers', // Sorting by followers makes the results more interesting
+            sort: 'followers', // Recommended sort for better results
             order: 'desc'
         };
         
@@ -67,7 +63,6 @@ const fetchAdvancedUsers = async ({ query, location, minRepos, page = 1 }) => {
             headers: headers
         });
 
-        // The search API returns results in 'items' array and total count
         return response.data; 
 
     } catch (error) {

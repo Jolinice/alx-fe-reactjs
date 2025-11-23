@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Base styles for a clean slate */
+/* Base styles for the application */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
