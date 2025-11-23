@@ -20,7 +20,7 @@ function App() {
         </header>
         <main>
           <Routes>
-            {/* The main route now renders the Search component */}
+            {/* The main route now renders the advanced Search component */}
             <Route path="/" element={<Search />} />
           </Routes>
         </main>
